@@ -328,6 +328,7 @@ class GuideView private constructor(context: Context, view: View?) :
         isShowing = true
     }
 
+
     fun setMessageViewToBeShown(view: View) {
         removeView(this.mMessageView)
         this.mMessageView = view

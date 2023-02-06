@@ -62,21 +62,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createGuide(view: View) {
+        var guideView: GuideView? = null
         val defaultGuideView = DefaultGuideView.Builder(this).apply {
             setButtonText("Ok, got it")
             setTitleText("Complete your information here.")
             setOnButtonClickedHof {
+                guideView?.dismiss()
                 Log.d("TAG", "createGuide: ButtonnyaKeclick cok")
             }
         }.build()
-        GuideView.Builder(this)
+        guideView = GuideView.Builder(this)
             .setGravity(Gravity.auto) //optional
             .setPointerType(PointerType.arrow)
             .setDismissType(DismissType.anywhere) //optional - default DismissType.targetView
             .setTargetView(view)
             .setMessageView(defaultGuideView)
             .build()
-            .show()
+        guideView.show()
     }
 
     private fun onExampleRecyclerItemClicked(position: Int) {
